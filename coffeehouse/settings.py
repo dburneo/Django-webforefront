@@ -10,10 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+from pathlib import Path
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -31,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_pdb',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +44,8 @@ INSTALLED_APPS = [
     'coffeehouse.about',
     'coffeehouse.stores',
     # 'coffeehouse.banners',
+    'debug_toolbar',
+    # 'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -51,12 +56,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'coffeehouse.utils.middleware.CoffeehouseMiddleware',
 ]
 
 ROOT_URLCONF = 'coffeehouse.urls'
 
-PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+# PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_DIR = Path(__file__).resolve().parent
 
 TEMPLATES = [
     {

@@ -1,3 +1,4 @@
 from django.contrib import admin
+from coffeehouse.stores.models import Store
 
-# Register your models here.
+admin.site.register(Store)
